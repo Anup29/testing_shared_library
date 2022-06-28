@@ -1,4 +1,4 @@
-def call(){
+def func(){
   sh "echo build function..."
 }
 
