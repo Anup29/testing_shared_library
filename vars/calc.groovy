@@ -8,9 +8,10 @@ def sub(x,y){
 
 def div(x,y){
   catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-        script{
-          sh (script:'${x}/${y}')
-        }
+    echo "${x}/${y}"
+//         script{
+//           sh (script:'${x}/${y}')
+//         }
     archiveArtifacts artifacts: 'racetrack_link.txt'
   }
 }
