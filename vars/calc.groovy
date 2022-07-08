@@ -9,7 +9,7 @@ def sub(x,y){
 def div(x,y){
   catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
         script{
-          sh ${x}/${y}
+          sh (script:'${x}/${y}')
         }
     archiveArtifacts artifacts: 'racetrack_link.txt'
   }
