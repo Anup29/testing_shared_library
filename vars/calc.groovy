@@ -4,6 +4,7 @@ def add(x,y){
 
 def sub(x,y){
   echo "Diff of ${x} and ${y} : ${x-y}"
+  return ${x-y}
 }
 
 def div(x,y){
