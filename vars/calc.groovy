@@ -13,3 +13,4 @@ def div(x,y){
         }
     archiveArtifacts artifacts: 'racetrack_link.txt'
   }
+}
