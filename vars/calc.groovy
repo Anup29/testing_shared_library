@@ -12,6 +12,6 @@ def div(x,y){
         script{
           sh (script:'${x/y}')
         }
-    archiveArtifacts artifacts: 'racetrack_link.txt'
+//     archiveArtifacts artifacts: 'racetrack_link.txt'
   }
 }
