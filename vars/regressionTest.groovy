@@ -3,6 +3,8 @@ def call(Map config){
     echo "Branch : ${config.branch}"
     echo "test_markers : ${config.test_markers}"
     echo "stages : ${config.stages}"
+    echo "JOB_NAME : ${env.JOB_NAME}"
+    echo "Build # : ${currentBuild.number}"
     def usecase_validation = build job: 't2'
     env.jobResult = usecase_validation.getResult()
     env.racetrack_id = usecase_validation.getBuildVariables()
