@@ -7,7 +7,7 @@ def call(Map config){
     echo "stages : ${config.stages}"
     echo "JOB_NAME : ${JOB_NAME}"
     echo "Build # : ${BUILD_NUMBER}"
-    def usecase_validation = build job: 't2'
+    def usecase_validation = build job: 't3'
     env.jobResult = usecase_validation.getResult()
     env.racetrack_id = usecase_validation.getBuildVariables()
     assert env.jobResult == "SUCCESS"
