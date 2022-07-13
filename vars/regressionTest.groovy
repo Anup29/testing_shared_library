@@ -1,6 +1,8 @@
 def call(Map config){
+    if(config.branch){
+        echo "Branch : ${config.branch}"
+    }
     echo "Triggering Testcase Execution"
-    echo "Branch : ${config.branch}"
     echo "test_markers : ${config.test_markers}"
     echo "stages : ${config.stages}"
     echo "JOB_NAME : ${JOB_NAME}"
