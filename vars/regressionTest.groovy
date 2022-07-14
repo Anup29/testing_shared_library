@@ -1,4 +1,8 @@
 def call(Map config){
+    def aws_profile="packer-role"
+    if(config.aws_profile){
+        aws_profile="env2"
+    }
     if(config.branch){
         echo "Branch : ${config.branch}"
     }
@@ -10,6 +14,9 @@ def call(Map config){
     def usecase_validation = build job: 't3'
     env.jobResult = usecase_validation.getResult()
     env.racetrack_id = usecase_validation.getBuildVariables()
+    sh '''
+    echo aws_profile
+    '''
     assert env.jobResult == "SUCCESS"
     return env.jobResult
 //      file_status=sh(script: 'curl -s -o /dev/null -w "%{http_code}" -u "${svc_user}:${svc_passwd}" https://jenkins-butler.svc.eng.vmware.com/job/"${JOB_NAME}"/"${BUILD_NUMBER}"/artifact/output/nimbus_sddc_details.json',returnStdout: true).trim()
