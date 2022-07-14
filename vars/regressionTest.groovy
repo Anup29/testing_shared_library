@@ -1,8 +1,11 @@
 def call(Map config){
     script{
-        def aws_profile="packer-role"
+//         def aws_profile="packer-role"
         if(config.aws_profile){
-            aws_profile="env2"
+            aws_profile="aws_profile_stg"
+        }
+        else{
+            aws_profile="aws_profile"
         }
         if(config.branch){
             echo "Branch : ${config.branch}"
