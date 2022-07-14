@@ -1,24 +1,26 @@
 def call(Map config){
-    def aws_profile="packer-role"
-    if(config.environment){
-        aws_profile="env2"
+    script{
+        def aws_profile="packer-role"
+        if(config.environment){
+            aws_profile="env2"
+        }
+        if(config.branch){
+            echo "Branch : ${config.branch}"
+        }
+        echo "Triggering Testcase Execution"
+        echo "test_markers : ${config.test_markers}"
+        echo "stages : ${config.stages}"
+        echo "JOB_NAME : ${JOB_NAME}"
+        echo "Build # : ${BUILD_NUMBER}"
+        def usecase_validation = build job: 't3'
+        env.jobResult = usecase_validation.getResult()
+        env.racetrack_id = usecase_validation.getBuildVariables()
+        sh '''
+        echo ${aws_profile}
+        '''
+        assert env.jobResult == "SUCCESS"
+        return env.jobResult
     }
-    if(config.branch){
-        echo "Branch : ${config.branch}"
-    }
-    echo "Triggering Testcase Execution"
-    echo "test_markers : ${config.test_markers}"
-    echo "stages : ${config.stages}"
-    echo "JOB_NAME : ${JOB_NAME}"
-    echo "Build # : ${BUILD_NUMBER}"
-    def usecase_validation = build job: 't3'
-    env.jobResult = usecase_validation.getResult()
-    env.racetrack_id = usecase_validation.getBuildVariables()
-    sh '''
-    echo ${aws_profile}
-    '''
-    assert env.jobResult == "SUCCESS"
-    return env.jobResult
 //      file_status=sh(script: 'curl -s -o /dev/null -w "%{http_code}" -u "${svc_user}:${svc_passwd}" https://jenkins-butler.svc.eng.vmware.com/job/"${JOB_NAME}"/"${BUILD_NUMBER}"/artifact/output/nimbus_sddc_details.json',returnStdout: true).trim()
 //      if ("${file_status}" == '200') {
 //         sh "wget --auth-no-challenge --http-user=${svc_user} --http-password=${svc_passwd} https://jenkins-butler.svc.eng.vmware.com/job/${JOB_NAME}/${BUILD_NUMBER}/artifact/output/nimbus_sddc_details.json"
