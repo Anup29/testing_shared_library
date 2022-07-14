@@ -21,7 +21,7 @@ def call(Map config){
 //         echo "${aws_profile}"
 //         sh '''
         echo "${this.aws_profile}"
-        ls -ltr  pwd.txt
+        sh "ls -ltr  pwd.txt"
 //            '''
         assert env.jobResult == "SUCCESS"
         return env.jobResult
