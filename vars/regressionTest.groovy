@@ -1,5 +1,5 @@
 def call(Map config){
-    script{
+    
 //         def aws_profile="packer-role"
         if(config.aws_profile){
             aws_profile="aws_profile_stg"
@@ -25,7 +25,7 @@ def call(Map config){
           '''
         assert env.jobResult == "SUCCESS"
         return env.jobResult
-    }
+    
 //      file_status=sh(script: 'curl -s -o /dev/null -w "%{http_code}" -u "${svc_user}:${svc_passwd}" https://jenkins-butler.svc.eng.vmware.com/job/"${JOB_NAME}"/"${BUILD_NUMBER}"/artifact/output/nimbus_sddc_details.json',returnStdout: true).trim()
 //      if ("${file_status}" == '200') {
 //         sh "wget --auth-no-challenge --http-user=${svc_user} --http-password=${svc_passwd} https://jenkins-butler.svc.eng.vmware.com/job/${JOB_NAME}/${BUILD_NUMBER}/artifact/output/nimbus_sddc_details.json"
