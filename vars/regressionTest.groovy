@@ -15,7 +15,7 @@ def call(Map config){
         def usecase_validation = build job: 't3'
         env.jobResult = usecase_validation.getResult()
         env.racetrack_id = usecase_validation.getBuildVariables()
-        echo "${aws_profile}"
+//         echo "${aws_profile}"
         sh '''
         echo ${aws_profile}
         '''
