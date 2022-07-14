@@ -16,9 +16,9 @@ def call(Map config){
         env.jobResult = usecase_validation.getResult()
         env.racetrack_id = usecase_validation.getBuildVariables()
 //         echo "${aws_profile}"
-        sh '''
+//         sh '''
         echo "${aws_profile}"
-         '''
+//          '''
         assert env.jobResult == "SUCCESS"
         return env.jobResult
     }
