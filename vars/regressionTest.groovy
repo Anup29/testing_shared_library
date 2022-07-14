@@ -1,7 +1,7 @@
 def call(Map config){
     script{
         def aws_profile="packer-role"
-        if(config.environment){
+        if(config.aws_profile){
             aws_profile="env2"
         }
         if(config.branch){
@@ -15,6 +15,7 @@ def call(Map config){
         def usecase_validation = build job: 't3'
         env.jobResult = usecase_validation.getResult()
         env.racetrack_id = usecase_validation.getBuildVariables()
+        echo "${aws_profile}"
         sh '''
         echo ${aws_profile}
         '''
