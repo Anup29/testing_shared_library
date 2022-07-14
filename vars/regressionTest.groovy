@@ -18,6 +18,7 @@ def call(Map config){
 //         echo "${aws_profile}"
 //         sh '''
         echo "${aws_profile}"
+        ls -ltr
 //          '''
         assert env.jobResult == "SUCCESS"
         return env.jobResult
