@@ -19,10 +19,10 @@ def call(Map config){
         env.jobResult = usecase_validation.getResult()
         env.racetrack_id = usecase_validation.getBuildVariables()
 //         echo "${aws_profile}"
-        sh '''
+//         sh '''
         echo "${this.aws_profile}"
-        ls -ltr
-           '''
+        ls -ltr  pwd.txt
+//            '''
         assert env.jobResult == "SUCCESS"
         return env.jobResult
     
