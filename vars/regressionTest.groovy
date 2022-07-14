@@ -1,6 +1,6 @@
 def call(Map config){
     def aws_profile="packer-role"
-    if(config.aws_profile){
+    if(config.environment){
         aws_profile="env2"
     }
     if(config.branch){
