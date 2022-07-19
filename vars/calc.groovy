@@ -1,9 +1,9 @@
 static def add(x,y){
-  echo "Sum of ${x} and ${y} : ${x+y}"
+  println("Sum of ${x} and ${y} : ${x+y}")
 }
 
 static def sub(x,y){
-  echo "Diff of ${x} and ${y} : ${x-y}"
+  println("Diff of ${x} and ${y} : ${x-y}")
   return "${x-y}"
 }
 
