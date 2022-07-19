@@ -1,4 +1,4 @@
-import vars.calc;
+import static calc.*
 
 def call(String env) {
     def r = calc.sub(10,5)
