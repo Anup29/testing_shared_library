@@ -1,4 +1,6 @@
 def call(Map config){
+    echo "${job_build_id}"
+    echo "${name_of_job}"
     
 //         def aws_profile="packer-role"
         if(config.aws_profile){
