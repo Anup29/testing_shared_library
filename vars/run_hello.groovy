@@ -1,3 +1,3 @@
-def say(String name, msg = 'Hello') {
+def say(name, msg = 'Hello') {
     println("$msg $name!")
 }
